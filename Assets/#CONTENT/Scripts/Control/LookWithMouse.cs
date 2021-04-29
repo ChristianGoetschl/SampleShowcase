@@ -23,6 +23,8 @@ public class LookWithMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Input.GetMouseButton(0)) return;
+
 #if ENABLE_INPUT_SYSTEM
         float mouseX = 0, mouseY = 0;
 
