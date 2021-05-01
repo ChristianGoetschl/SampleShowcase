@@ -1,31 +1,35 @@
 using UnityEngine;
 
-public class Slide : MonoBehaviour
+public abstract class Slide : MonoBehaviour
 {
-    [SerializeField] private AnimationCurve _xAxis = AnimationCurve.Constant(0f, 1f, 0f);
-    [SerializeField] private AnimationCurve _yAxis = AnimationCurve.Constant(0f, 1f, 0f);
-    [SerializeField] private AnimationCurve _zAxis = AnimationCurve.Constant(0f, 1f, 0f);
+    [SerializeField] protected AnimationCurve _xAxis = AnimationCurve.Constant(0f, 1f, 0f);
+    [SerializeField] protected AnimationCurve _yAxis = AnimationCurve.Constant(0f, 1f, 0f);
+    [SerializeField] protected AnimationCurve _zAxis = AnimationCurve.Constant(0f, 1f, 0f);
 
-    private Vector3 _originPos;
-    private float _xLength = 0f;
-    private float _yLength = 0f;
-    private float _zLength = 0f;
+    protected Vector3 _originLocalPos;
+    protected float _xLength = 0f;
+    protected float _yLength = 0f;
+    protected float _zLength = 0f;
 
-    private void Start()
+    protected virtual void Start()
     {
-        _originPos = transform.position;
+        _originLocalPos = transform.localPosition;
 
         _xLength = _xAxis.length == 0 ? 0f : _xAxis.keys[_xAxis.length - 1].time;
         _yLength = _yAxis.length == 0 ? 0f : _yAxis.keys[_yAxis.length - 1].time;
         _zLength = _zAxis.length == 0 ? 0f : _zAxis.keys[_zAxis.length - 1].time;
     }
 
-    private void Update()
+    protected void SetSlideAt(float progress)
     {
-        float newX = _xLength == 0f ? 0f : _xAxis.Evaluate(Time.time % _xLength);
-        float newY = _yLength == 0f ? 0f : _yAxis.Evaluate(Time.time % _yLength);
-        float newZ = _zLength == 0f ? 0f : _zAxis.Evaluate(Time.time % _zLength);
+        Vector3 localOffset = Vector3.zero;
 
-        transform.position = _originPos + new Vector3(newX, newY, newZ);
+        localOffset.x = EvaluateState(progress, ref _xAxis, _xLength);
+        localOffset.y = EvaluateState(progress, ref _yAxis, _yLength);
+        localOffset.z = EvaluateState(progress, ref _zAxis, _zLength);
+
+        transform.localPosition = _originLocalPos + localOffset;
     }
+
+    protected abstract float EvaluateState(float progress, ref AnimationCurve animCurve, float length);
 }

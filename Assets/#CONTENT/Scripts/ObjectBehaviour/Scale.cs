@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Scale : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    [SerializeField] private float _ratioOffset = 0f;
+
     [SerializeField] private AnimationCurve _xAxis = AnimationCurve.Constant(0f, 1f, 0f);
     [SerializeField] private AnimationCurve _yAxis = AnimationCurve.Constant(0f, 1f, 0f);
     [SerializeField] private AnimationCurve _zAxis = AnimationCurve.Constant(0f, 1f, 0f);
@@ -22,9 +25,9 @@ public class Scale : MonoBehaviour
 
     private void Update()
     {
-        float newX = _xLength == 0f ? 0f : _xAxis.Evaluate(Time.time % _xLength);
-        float newY = _yLength == 0f ? 0f : _yAxis.Evaluate(Time.time % _yLength);
-        float newZ = _zLength == 0f ? 0f : _zAxis.Evaluate(Time.time % _zLength);
+        float newX = _xLength == 0f ? 0f : _xAxis.Evaluate((Time.time + (_ratioOffset * _xLength)) % _xLength);
+        float newY = _yLength == 0f ? 0f : _yAxis.Evaluate((Time.time + (_ratioOffset * _yLength)) % _yLength);
+        float newZ = _zLength == 0f ? 0f : _zAxis.Evaluate((Time.time + (_ratioOffset * _zLength)) % _zLength);
 
         transform.localScale = _originScale + new Vector3(newX, newY, newZ);
     }
