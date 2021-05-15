@@ -5,13 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/#CONTENT/Scenes/Showcase.unity
     guid: bc08c0d50e1e1d84290dcc36603b81ca
   - enabled: 1
-    path: Assets/#CONTENT/Scenes/ShaderShowcase.unity
-    guid: 787b3b4502c1ecf488f013f829c8492c
-  m_configObjects: {}
+    path: Assets/#CONTENT/Scenes/PerformanceTestLab.unity
+    guid: d68b2f35e16c23e4c9f6b329f1125897
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 6ff2e5ca2f1f0ee41b8b5e2f70be9e24, type: 2}
