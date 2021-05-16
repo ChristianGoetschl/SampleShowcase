@@ -15,18 +15,13 @@ public class ObjectSelector : MonoBehaviour
         _spawner = GetComponent<AddressableSpawner>();
     }
 
-    private void Update()
+    public void SwitchToACAsset() => SwitchToAddressable(_acAsset);
+    public void SwitchToLegacyAsset() => SwitchToAddressable(_legacyAnimAsset);
+    public void SwitchToScriptAsset() => SwitchToAddressable(_scriptAsset);
+
+    private void SwitchToAddressable(AssetReference newAssetRef)
     {
-        // read hotkey input
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchToACAsset();
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchToLegacyAsset();
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchToScriptAsset();
-
-        if (Input.GetKeyDown(KeyCode.Space)) _spawner.SpawnObjects();
-        if (Input.GetKeyDown(KeyCode.Backspace)) _spawner.DeSpawnObjects();
+        _spawner.ObjectToSpawn = newAssetRef;
+        _spawner.SpawnObjects();
     }
-
-    public void SwitchToACAsset() => _spawner.ObjectToSpawn = _acAsset;
-    public void SwitchToLegacyAsset() => _spawner.ObjectToSpawn = _legacyAnimAsset;
-    public void SwitchToScriptAsset() => _spawner.ObjectToSpawn = _scriptAsset;
 }
