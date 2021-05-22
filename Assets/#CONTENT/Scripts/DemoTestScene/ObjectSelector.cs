@@ -7,6 +7,7 @@ public class ObjectSelector : MonoBehaviour
     [SerializeField] private AssetReference _acAsset = null;
     [SerializeField] private AssetReference _legacyAnimAsset = null;
     [SerializeField] private AssetReference _scriptAsset = null;
+    [SerializeField] private AssetReference _shaderAsset = null;
 
     private AddressableSpawner _spawner;
 
@@ -18,6 +19,7 @@ public class ObjectSelector : MonoBehaviour
     public void SwitchToACAsset() => SwitchToAddressable(_acAsset);
     public void SwitchToLegacyAsset() => SwitchToAddressable(_legacyAnimAsset);
     public void SwitchToScriptAsset() => SwitchToAddressable(_scriptAsset);
+    public void SwitchToShaderAsset() => SwitchToAddressable(_shaderAsset);
 
     private void SwitchToAddressable(AssetReference newAssetRef)
     {
