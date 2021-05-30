@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AnimTexture_Mat
+  m_Name: StreetLight_Offset_Mat
   m_Shader: {fileID: -6465566751694194690, guid: b950a130fc00e8e43a452e25b9c3da70, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DOUBLESIDED_ON
   m_LightmapFlags: 4
@@ -84,7 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 18700000, guid: 4f779a2d8fe61f94280a8090dbdfe4cd, type: 3}
+        m_Texture: {fileID: 18700000, guid: 1af492086002de34ea3dfc348a8d61d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -184,7 +184,7 @@ Material:
     - _EnergyConservingSpecularColor: 1
     - _FrameCount: 14
     - _Framerate: 12
-    - _Frames: 14
+    - _Frames: 6
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -240,6 +240,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
+    - _TimeOffset: 0.5
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
